@@ -1,9 +1,25 @@
-var http = require('http');
+// modules =================================================
+var express        = require('express');
+var app            = express();
+var bodyParser     = require('body-parser');
+var methodOverride = require('method-override');
+var mongoose       = require('mongoose');
 
-http.createServer((req, res) => {
-    
-    res.writeHead(200);
-    res.end("Hello world");
+// configuration ===========================================
+var db = require('./config/db');
 
-}).listen(777, '127.0.0.1');
+var port = 8080;
 
+mongoose.connect(db.url); 
+
+// routes ==================================================
+require('./app/routes')(app);
+
+// start app ===============================================
+app.listen(port);
+
+// shoutout to the user                     
+console.log('Magic happens on port ' + port);
+
+// expose app           
+exports = module.exports = app;
