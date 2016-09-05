@@ -43,3 +43,6 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+/.vs/App/v14/.suo
+/bin/Microsoft.NodejsTools.WebRole.dll
+/obj/Debug/NodeApp.njsproj.FileListAbsolute.txt
