@@ -1,13 +1,33 @@
-var mongoose = require('mongoose');
+'use strict';
 
-var Schema = mongoose.Schema;
+class Document{
+  constructor(docTypeId, docNumber, pageCount, urlToImage, creationDate){
+    this.docTypeId = docTypeId;
+    this.docNumber = docNumber;
+    this.pageCount = pageCount;
+    this.urlToImage = urlToImage;
+    this.creationDate = creationDate;
+  }
 
-var documentSchema = new Schema({  
-  DocTypeId: Number,
-  DocNumber: String,
-  PageCount: Number,
-  urlToImage: String,
-  CreationDate: Date
-});
+  get docTypeId(){
+    return this.docTypeId;
+  }
 
-module.exports = mongoose.model('Document', documentSchema);
+  get docNumber(){
+    return this.docNumber;
+  }
+
+  get pageCount(){
+    return this.pageCount;
+  }
+
+  get urlToImage(){
+    return this.urlToImage;
+  }
+
+  get creationDate(){
+    return this.creationDate;
+  }
+}
+
+module.exports = Document;
