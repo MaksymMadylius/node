@@ -20,7 +20,7 @@ var port = 8080;
 mongoose.connect(db.url); 
 
 // routes ==================================================
-require('./app/routes')(app);
+require('./app_start/routes')(app);
 
 // start app ===============================================
 app.listen(port);

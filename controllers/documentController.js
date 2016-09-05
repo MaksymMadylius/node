@@ -1,18 +1,24 @@
-var Document = require('./models/document');
+var express = require('express');
+var router = express.Router();
+var Document = require('../models/document');
 
-module.exports = function(app) {    
-    app.get('/api/documents', function(req, res) {        
-        Document.find(function(err, documents) {
+module.exports = router;
+
+router.get('/', indexAction);
+router.get('/index', indexAction);
+
+function indexAction(req, res){
+    Document.find(function(err, documents) {
             if (err) {
                 res.send(err);
             }
 
             res.json(documents);
         });
-    });
+}
 
-    app.post('/api/addDocument', function (req, res) {
-        // Get our form values. These rely on the "name" attributes
+function addDocumentAction(req, res){
+    // Get our form values. These rely on the "name" attributes
         var DocTypeId = req.body.DocTypeId
         var DocNumber = req.body.DocNumber
         var PageCount = req.body.PageCount
@@ -37,5 +43,5 @@ module.exports = function(app) {
                 res.redirect("/api/documents");
             }
         });
-    });
-};
+    }
+
