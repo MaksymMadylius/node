@@ -2,8 +2,8 @@
 
 var express = require('express');
 var router = express.Router();
-var Document = require('../models/document');
-var DocumentRepository = require('../models/repositories/mongooseDocumentRepository.js');
+var MongooseDocumentRepository = require('../models/repositories/mongooseDocumentRepository');
+var DocumentModel = require('../models/documentModel');
 
 module.exports = router;
 
@@ -13,7 +13,7 @@ router.put('/', addDocumentAction);
 
 
 function indexAction(req, res){
-    var repo = new DocumentRepository();
+    var repo = new MongooseDocumentRepository();
     repo.getAll(function(err, documents) {
             if (err) {
                 res.send(err);
@@ -24,16 +24,15 @@ function indexAction(req, res){
 }
 
 function addDocumentAction(req, res){
-    // Get our form values. These rely on the "name" attributes
-        var document = new Document(req.body.DocTypeId,
+        var document = new DocumentModel(req.body.DocTypeId,
                                     req.body.DocNumber,
                                     req.body.PageCount,
                                     req.body.urlToImage,
                                     req.body.CreationDate);
 
-        var repo = new DocumentRepository();
+        var repo = new MongooseDocumentRepository();
 
-        repo.insert(document, function (err, doc) {
+        repo.insert(null, function (err, doc) {
                                 if (err) {
                                     // If it failed, return error
                                     res.send("There was a problem adding the information to the database.");
