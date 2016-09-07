@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="c65c37aa-ae94-4f70-8eb5-49c69a2bef6d" name="Ostap_Pankevych@EPUALVIW1283 2016-09-07 14:17:14" runUser="KYIV\Ostap_Pankevych" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="8d2e5e30-6a12-4231-bb04-b39615893e3e">
+    <Description>These are default test settings for a local test run.</Description>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+    <Deployment runDeploymentRoot="Ostap_Pankevych_EPUALVIW1283 2016-09-07 14_17_14" />
+    <Properties>
+      <Property name="TestSettingsUIType" value="LoadTest" />
+    </Properties>
+  </TestSettings>
+  <Times creation="2016-09-07T14:17:14.5783123+03:00" queuing="2016-09-07T14:17:15.9171521+03:00" start="2016-09-07T14:17:16.2502244+03:00" finish="2016-09-07T14:17:16.6113188+03:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <WebTest name="WebTest1" storage="c:\users\ostap_pankevych\desktop\nodejs\webperformancetest\webtest1.webtest" id="3ebb77a7-e54c-4c19-a8a1-03e681e68684" persistedWebTest="77u/PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/Pg0KPFdlYlRlc3QgTmFtZT0iV2ViVGVzdDEiIElkPSIzZWJiNzdhNy1lNTRjLTRjMTktYThhMS0wM2U2ODFlNjg2ODQiIE93bmVyPSIiIFByaW9yaXR5PSIyMTQ3NDgzNjQ3IiBFbmFibGVkPSJUcnVlIiBDc3NQcm9qZWN0U3RydWN0dXJlPSIiIENzc0l0ZXJhdGlvbj0iIiBUaW1lb3V0PSIwIiBXb3JrSXRlbUlkcz0iIiB4bWxucz0iaHR0cDovL21pY3Jvc29mdC5jb20vc2NoZW1hcy9WaXN1YWxTdHVkaW8vVGVhbVRlc3QvMjAxMCIgRGVzY3JpcHRpb249IiIgQ3JlZGVudGlhbFVzZXJOYW1lPSIiIENyZWRlbnRpYWxQYXNzd29yZD0iIiBQcmVBdXRoZW50aWNhdGU9IlRydWUiIFByb3h5PSJkZWZhdWx0IiBTdG9wT25FcnJvcj0iRmFsc2UiIFJlY29yZGVkUmVzdWx0RmlsZT0iIiBSZXN1bHRzTG9jYWxlPSIiIC8+">
+      <Execution id="57cf45e0-f5dc-46f7-81b6-667ba70ae8fa" />
+    </WebTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry isTransparent="false" testId="3ebb77a7-e54c-4c19-a8a1-03e681e68684" executionId="57cf45e0-f5dc-46f7-81b6-667ba70ae8fa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <WebTestResult executionId="57cf45e0-f5dc-46f7-81b6-667ba70ae8fa" testId="3ebb77a7-e54c-4c19-a8a1-03e681e68684" testName="WebTest1" computerName="EPUALVIW1283" duration="00:00:00.0065108" startTime="2016-09-07T14:17:16.3522402+03:00" endTime="2016-09-07T14:17:16.5373023+03:00" testType="4e7599fa-5ecb-43e9-a887-cd63cf72d207" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="57cf45e0-f5dc-46f7-81b6-667ba70ae8fa">
+      <ResultFiles>
+        <ResultFile path="WebTest1.webtestResult" />
+      </ResultFiles>
+      <TestSettings name="Local" id="8d2e5e30-6a12-4231-bb04-b39615893e3e">
+        <Description>These are default test settings for a local test run.</Description>
+        <Execution>
+          <TestTypeSpecific>
+            <WebTestRunConfiguration testTypeId="4e7599fa-5ecb-43e9-a887-cd63cf72d207">
+              <Browser name="Internet Explorer 9.0" MaxConnections="6">
+                <Headers>
+                  <Header name="User-Agent" value="Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)" />
+                  <Header name="Accept" value="*/*" />
+                  <Header name="Accept-Language" value="{{$IEAcceptLanguage}}" />
+                  <Header name="Accept-Encoding" value="GZIP" />
+                </Headers>
+              </Browser>
+            </WebTestRunConfiguration>
+          </TestTypeSpecific>
+          <AgentRule name="Execution Agents">
+          </AgentRule>
+        </Execution>
+        <Deployment runDeploymentRoot="Ostap_Pankevych_EPUALVIW1283 2016-09-07 14_17_14" />
+        <Properties>
+          <Property name="TestSettingsUIType" value="LoadTest" />
+        </Properties>
+      </TestSettings>
+      <WebTestResultFilePath>Ostap_Pankevych_EPUALVIW1283 2016-09-07 14_17_14\In\57cf45e0-f5dc-46f7-81b6-667ba70ae8fa\WebTest1.webtestResult</WebTestResultFilePath>
+    </WebTestResult>
+  </Results>
+</TestRun>
