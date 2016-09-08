@@ -8,7 +8,7 @@ namespace Scheduler.IntegrationTests.RequestManager
 {
     interface IRequester
     {
-        IEnumerable<Tuple<HttpResponseMessage, TimeSpan>> Get(string url, int usersCount, JArray jsonArray);
+        IEnumerable<Tuple<HttpResponseMessage, TimeSpan>> Get(string url, int usersCount);
         IEnumerable<Tuple<HttpResponseMessage, TimeSpan>> Post(string url, int usersCount, JArray jsonArray);
     }
 }
