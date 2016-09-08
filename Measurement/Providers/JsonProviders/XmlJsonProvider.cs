@@ -3,31 +3,20 @@ using System.Collections.Generic;
 using System.Xml;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Measurement.Repositories;
 
 namespace Measurement.Providers.JsonProviders
 {
-    public class XmlJsonProvider : IJsonProvider
+    public class XmlJsonProvider: BaseJsonFileProvider, IJsonProvider
     {
-        #region Private
-
-        private readonly string _xmlPath;
-
-        #endregion
-
-        #region Ctors
-
-        public XmlJsonProvider(string xmlPath)
+        public XmlJsonProvider(string xmlPath): base(xmlPath)
         {
-            _xmlPath = xmlPath;
+            fileRepository = new FileRepository();
         }
-
-        #endregion
-
-        #region Methods
 
         public JArray GetJson()
         {
-            var xmlNodeList = GetXmlDocument();
+            var xmlNodeList = fileRepository.GetXmlDocument(filePath).DocumentElement.ChildNodes;
 
             var jArray = new JArray();
             foreach(XmlNode node in xmlNodeList)
@@ -38,19 +27,5 @@ namespace Measurement.Providers.JsonProviders
 
             return jArray;
         }
-
-        #endregion
-
-        #region Helpers
-
-        private XmlNodeList GetXmlDocument()
-        {
-            var xmlDoc = new XmlDocument();
-            xmlDoc.Load(_xmlPath);
-
-            return xmlDoc.DocumentElement.ChildNodes;
-        }
-
-        #endregion
     }
 }

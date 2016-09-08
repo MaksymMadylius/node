@@ -7,6 +7,6 @@ namespace Measurement.Managers.MeasurementManagers
 {
     public interface IMeasurementSaver
     {
-        void SaveDimensions(IEnumerable<Tuple<HttpResponseMessage, TimeSpan>> result, int userCount);
+        void SaveDimensions(IEnumerable<Tuple<HttpResponseMessage, TimeSpan>> result, int userCount, string filePath);
     }
 }

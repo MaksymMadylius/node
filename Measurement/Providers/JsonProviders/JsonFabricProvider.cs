@@ -1,20 +1,15 @@
 ﻿using System;
 using Newtonsoft.Json.Linq;
-using System.IO;
-using System.Configuration;
-using Measurement.Providers.DirectoryProviders;
 
 namespace Measurement.Providers.JsonProviders
 {
     public class JsonFabricProvider : IJsonProvider
     {
-        private const string xmlJsonFileNameKey = "xmlJsonFile";
-
         private IJsonProvider _jSonProvider;
 
-        public JsonFabricProvider(string providerType)
+        public JsonFabricProvider(string providerType, object[] objs)
         {
-            InitProvider(providerType);
+            InitProvider(providerType, objs);
         }
 
         public JArray GetJson()
@@ -22,13 +17,13 @@ namespace Measurement.Providers.JsonProviders
             return _jSonProvider.GetJson();
         }
 
-        protected void InitProvider(string providerType)
+        protected void InitProvider(string providerType, object[] objs)
         {
             var type = Type.GetType(providerType);
 
             if (type == typeof(XmlJsonProvider))
             {
-                _jSonProvider = (IJsonProvider)Activator.CreateInstance(type, new[] { DirectoryProvider.GetFullPath(xmlJsonFileNameKey) });
+                _jSonProvider = (IJsonProvider)Activator.CreateInstance(type, objs);
             }
         }
     }

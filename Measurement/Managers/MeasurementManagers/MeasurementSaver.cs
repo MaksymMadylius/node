@@ -1,5 +1,5 @@
 ﻿using Measurement.Models;
-using Measurement.Providers.DirectoryProviders;
+using Measurement.Repositories;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,12 +10,17 @@ namespace Measurement.Managers.MeasurementManagers
 {
     public class MeasurementSaver : IMeasurementSaver
     {
-        private const string MeasurementFilePath = "measurementFilePath";
+        private readonly IFileRepository _fileRepository;
 
-        public void SaveDimensions(IEnumerable<Tuple<HttpResponseMessage, TimeSpan>> result, int userCount)
+        public MeasurementSaver()
+        {
+            _fileRepository = new FileRepository();
+        }
+
+        public void SaveDimensions(IEnumerable<Tuple<HttpResponseMessage, TimeSpan>> result, int userCount, string filePath)
         {
             var dimensionResults = GetResults(result, userCount);
-            SaveResults(dimensionResults);
+            SaveResults(dimensionResults, filePath);
         }
 
         private DimensionResults GetResults(IEnumerable<Tuple<HttpResponseMessage, TimeSpan>> result, int userCount)
@@ -39,28 +44,10 @@ namespace Measurement.Managers.MeasurementManagers
             return dimensionResult;
         }
 
-        private void SaveResults(DimensionResults results)
+        private void SaveResults(DimensionResults results, string filePath)
         {
-            var xmlDocument = GetXmlDocument(DirectoryProvider.GetFullPath(MeasurementFilePath));
-            var xmlNodeResult = ConvertDimensionResultToXmlNode(results);
-
-            xmlDocument.InsertAfter(xmlDocument.LastChild, xmlNodeResult);
-        }
-
-        private XmlDocument GetXmlDocument(string filePath)
-        {
-            var xmlDoc = new XmlDocument();
-            xmlDoc.Load(filePath);
-
-            return xmlDoc;
-        }
-
-        private XmlNode ConvertDimensionResultToXmlNode(DimensionResults result)
-        {
-            var serializedResult = JsonConvert.SerializeObject(result);
-            var xmlNode = JsonConvert.DeserializeXmlNode(serializedResult);
-
-            return xmlNode;
+            var serializedResult = JsonConvert.SerializeObject(results);
+            _fileRepository.AppendToTxtFile(filePath, serializedResult);
         }
     }
 }

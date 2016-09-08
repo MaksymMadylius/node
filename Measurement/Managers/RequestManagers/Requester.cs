@@ -32,14 +32,12 @@ namespace Measurement.Managers.RequestManagers
 
         private HttpResponseMessage Post(string url, JArray jsonArray)
         {
-
             var request = new HttpRequestMessage { RequestUri = new Uri(url) };
             request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             request.Method = HttpMethod.Post;
             request.Content = new ObjectContent<JArray>(jsonArray, new JsonMediaTypeFormatter());
 
             HttpResponseMessage response = _client.SendAsync(request, new CancellationTokenSource().Token).Result;
-
             return response;
         }
         IEnumerable<Tuple<HttpResponseMessage, TimeSpan>> IRequester.Get(string url, int usersCount)
